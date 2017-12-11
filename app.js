@@ -4,11 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var log4js = require("./logs");
 var cors = require('cors');
 
 var bindRoute = require('./routes/bind-route.js')
 
 var app = express();
+
+// 初始化配置
+log4js.configure();
+// 挂载中间件
+app.use(log4js.useLog());
 
 app.use(cors());
 

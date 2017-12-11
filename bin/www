@@ -7,7 +7,6 @@
 var app = require('../app');
 var debug = require('debug')('heaven-system-by-express:server');
 var http = require('http');
-
 // 初始化socket.io
 var socket = require('../routes/socket-index.js')
 
@@ -89,5 +88,7 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
+  var log4jsInfo = require("../logs").logger();
+  log4jsInfo.debug('系统初始化成功')
   debug('Listening on ' + bind);
 }

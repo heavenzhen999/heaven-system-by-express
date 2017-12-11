@@ -15,11 +15,13 @@
     "express": "~4.15.2",
     "hotnode": "0.0.8",
     "jade": "~1.11.0",
+    "log4js": "^2.3.12",
     "mongoose": "^4.13.6",
     "morgan": "~1.8.1",
     "orm": "^4.0.2",
     "potrace": "^2.1.1",
     "serve-favicon": "~2.4.2",
+    "soap": "^0.23.0",
     "socket.io": "^2.0.4",
     "uuid": "^3.1.0"
   }
