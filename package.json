@@ -10,14 +10,17 @@
   "dependencies": {
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
     "debug": "~2.6.3",
     "express": "~4.15.2",
     "hotnode": "0.0.8",
     "jade": "~1.11.0",
     "mongoose": "^4.13.6",
     "morgan": "~1.8.1",
+    "orm": "^4.0.2",
     "potrace": "^2.1.1",
     "serve-favicon": "~2.4.2",
+    "socket.io": "^2.0.4",
     "uuid": "^3.1.0"
   }
 }

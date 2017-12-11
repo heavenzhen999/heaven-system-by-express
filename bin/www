@@ -8,6 +8,9 @@ var app = require('../app');
 var debug = require('debug')('heaven-system-by-express:server');
 var http = require('http');
 
+// 初始化socket.io
+var socket = require('../routes/socket-index.js')
+
 /**
  * Get port from environment and store in Express.
  */
@@ -20,7 +23,7 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-
+socket.init(server)
 /**
  * Listen on provided port, on all network interfaces.
  */

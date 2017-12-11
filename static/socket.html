@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>socket</title>
+</head>
+
+<body>
+
+
+<button id="sendBtn">发送消息</button>
+
+<button id="leaveBtn">离开</button>
+
+</body>
+<script src="https://cdn.bootcss.com/socket.io/2.0.4/socket.io.js"></script>
+<script type="text/javascript">
+    // var socket=io.connect('localhost:8090'),//与服务器进行连接
+    var socket = io('localhost:8090');
+    var send=document.getElementById('sendBtn');
+    var leave=document.getElementById('leaveBtn');
+
+    send.onclick=function(){
+        socket.emit('hi', 'hello!');
+    }
+
+</script>
+
+</html>
