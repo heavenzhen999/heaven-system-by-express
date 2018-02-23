@@ -89,6 +89,6 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   var log4jsInfo = require("../logs").logger();
-  log4jsInfo.debug('系统初始化成功')
+  log4jsInfo.debug(`系统初始化成功,端口为${addr.port}`)
   debug('Listening on ' + bind);
 }

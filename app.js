@@ -7,7 +7,7 @@ var bodyParser = require('body-parser')
 var log4js = require('./logs')
 var cors = require('cors')
 
-var bindRoute = require('./routes/bind-route.js')
+var bindRoute = require('./routes')
 
 var app = express()
 

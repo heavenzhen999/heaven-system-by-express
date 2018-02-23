@@ -1,5 +1,10 @@
 # git ignore
 node_modules
+
 logs
 !logs/index.js
 !logs/log4js.json
+
+static/data
+static/data2
+static/source
