@@ -2,8 +2,8 @@
  * @Author: zhen chen
  * @Date: 2017-12-11 10:20:43
  * @Last Modified by: zhen chen
- * @Last Modified time: 2017-12-11 10:20:43
- * @description 
+ * @Last Modified time: 2018-02-23 09:02:19
+ * @description mysql 数据库连接
  */
 
 // var express = require('express');
