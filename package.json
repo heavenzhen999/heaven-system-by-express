@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "@esri/arcgis-to-geojson-utils": "^1.0.5",
+    "axios": "^0.18.0",
     "body-parser": "~1.17.1",
+    "cheerio": "^1.0.0-rc.2",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",
     "debug": "~2.6.3",
+    "eslint": "^4.19.1",
     "express": "~4.15.2",
     "hotnode": "0.0.8",
     "jade": "~1.11.0",
