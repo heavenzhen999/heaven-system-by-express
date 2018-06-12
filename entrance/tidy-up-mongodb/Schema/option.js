@@ -1,0 +1,23 @@
+module.exports = {
+  tml_id: String,
+  vehicle_id: Number,
+  gpsmode: Number,
+  longitude: Number,
+  latitude: Number,
+  speed: Number,
+  direction: Number,
+  data: String,
+  satelitenum: Number,
+  differtime: Number,
+  location: String,
+  state: String,
+  oil: Number,
+  carry: Number,
+  route_id: String,
+  driver_id: String,
+  protocol_id: Number,
+  ipaddr_dw: String,
+  msg_seq: Number,
+  value: String,
+  systemtime: Date
+}
