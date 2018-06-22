@@ -1,4 +1,5 @@
 var express = require('express')
+var session = require('express-session');
 var path = require('path')
 // var favicon = require('serve-favicon')
 var logger = require('morgan')
@@ -31,6 +32,23 @@ app.use(bodyParser.json({limit: '50mb'}))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/static', express.static('static'))
+
+app.use(session({
+  //这里的name值得是cookie的name，默认cookie的name是：connect.sid
+  name: 'cze',
+  secret: 'keyboard cat', 
+  cookie: { path: '/', httpOnly: true, secure: false, maxAge:  60000 },
+  //重新保存：强制会话保存即使是未修改的。默认为true但是得写上
+  resave: true, 
+  //强制“未初始化”的会话保存到存储。 
+  saveUninitialized: true
+}))
+
+// 跨域情况下 必须添加此属性 用以可以接收到cookie
+app.use('*', (req, res, next) => {
+  res.setHeader('Access-Control-Allow-Credentials', true)
+  next()
+})
 
 bindRoute(app)
 

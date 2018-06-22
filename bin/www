@@ -3,33 +3,52 @@
 /**
  * Module dependencies.
  */
+const cluster = require('cluster');
+const numCPUs = require('os').cpus().length;
 
-var app = require('../app');
 var debug = require('debug')('heaven-system-by-express:server');
 var http = require('http');
+var app = require('../app');
 // 初始化socket.io
 var socket = require('../routes/socket-index.js')
 
-/**
- * Get port from environment and store in Express.
- */
+if (cluster.isMaster) {
+  console.log(`主进程 ${process.pid} 正在运行`);
 
-var port = normalizePort(process.env.PORT || '8092');
-app.set('port', port);
+  // 衍生工作进程。
+  for (let i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
 
-/**
- * Create HTTP server.
- */
+  cluster.on('exit', (worker, code, signal) => {
+    console.log(`工作进程 ${worker.process.pid} 已退出`);
+  });
+} else {
 
-var server = http.createServer(app);
-socket.init(server)
-/**
- * Listen on provided port, on all network interfaces.
- */
+  /**
+   * Get port from environment and store in Express.
+   */
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+  var port = normalizePort(process.env.PORT || '8092');
+  app.set('port', port);
+
+  /**
+   * Create HTTP server.
+   */
+
+  var server = http.createServer(app);
+  // socket.init(server)
+  /**
+   * Listen on provided port, on all network interfaces.
+   */
+
+  server.listen(port);
+  server.on('error', onError);
+  server.on('listening', onListening);
+
+  console.log(`工作进程 ${process.pid} 已启动`);
+}
+
 
 /**
  * Normalize a port into a number, string, or false.
