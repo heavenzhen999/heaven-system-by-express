@@ -2,15 +2,15 @@
  * @Author: chen zhen
  * @Date: 2018-05-28 10:07:24
  * @Last Modified by: chen zhen
- * @Last Modified time: 2018-05-28 11:16:22
+ * @Last Modified time: 2018-10-09 11:11:19
  * @Description: 用来新增测试数据
  */
 const UUID = require('uuid')
 const Test = require('../database/mongodb/Model/test-Model')
 
 // type为随机数，测试总数为1000 * 3000
-const max = 1
-const maxNum = 50000
+const max = 1000
+const maxNum = 3000
 const all = max * maxNum
 
 let startTime;
@@ -57,6 +57,8 @@ function createTest(title = 0, num = 0, type=UUID.v4(), callback) {
   }
 
 }
+
+center()
 
 module.exports = center
 
