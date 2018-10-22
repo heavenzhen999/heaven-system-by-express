@@ -33,6 +33,8 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/static', express.static('static'))
 
+
+// 添加session机制
 app.use(session({
   //这里的name值得是cookie的name，默认cookie的name是：connect.sid
   name: 'cze',
