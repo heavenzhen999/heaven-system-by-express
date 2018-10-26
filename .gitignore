@@ -6,3 +6,4 @@ logs/server-*
 static/data
 static/data2
 static/source
+static/bus-line

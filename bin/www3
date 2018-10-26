@@ -3,6 +3,8 @@
 /**
  * Module dependencies.
  */
+const cluster = require('cluster');
+const numCPUs = require('os').cpus().length;
 
 var debug = require('debug')('heaven-system-by-express:server');
 var http = require('http');
@@ -10,7 +12,20 @@ var app = require('../app');
 // 初始化socket.io
 var socket = require('../routes/socket-index.js')
 
-/**
+if (cluster.isMaster) {
+  console.log(`主进程 ${process.pid} 正在运行`);
+
+  // 衍生工作进程。(TODO 暂时仅仅使用一个线程)
+  console.log(`未使用cpu数量${numCPUs}`)
+  for (let i = 0; i < 1; i++) {
+    cluster.fork();
+  }
+
+  cluster.on('exit', (worker, code, signal) => {
+    console.log(`工作进程 ${worker.process.pid} 已退出`);
+  });
+} else {
+  /**
    * Get port from environment and store in Express.
    */
 
@@ -30,6 +45,10 @@ var socket = require('../routes/socket-index.js')
   server.listen(port);
   server.on('error', onError);
   server.on('listening', onListening);
+
+  console.log(`工作进程 ${process.pid} 已启动`);
+}
+
 
 /**
  * Normalize a port into a number, string, or false.

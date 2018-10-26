@@ -2,13 +2,13 @@
  * @Author: chen zhen
  * @Date: 2018-05-30 08:48:48
  * @Last Modified by: chen zhen
- * @Last Modified time: 2018-05-30 16:07:45
+ * @Last Modified time: 2018-10-26 13:21:57
  * @Description: 国泰星云 - 青岛北斗云项目 由于之前数据存储方案的问题，遂将数据进行赋值分离
  *               当前PositionEx的数据为452198条，目前只处理包含2018/5/27号以及之前的所有数据 
  * 
  *               DJK 3892365  3892次
  */
-var tools = require('../../tool')
+var tools = require('../../utils')
 var mongoose = require('../../database/mongodb/db.js');
 var Schema = mongoose.Schema;
 

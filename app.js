@@ -17,6 +17,7 @@ log4js.configure()
 // 挂载中间件
 app.use(log4js.useLog())
 
+// 添加CORS 用以支持不同源访问
 app.use(cors())
 
 // view engine setup
