@@ -2,7 +2,7 @@
  * @Author: chen zhen
  * @Date: 2018-10-26 11:58:09
  * @Last Modified by: chen zhen
- * @Last Modified time: 2018-10-26 17:33:29
+ * @Last Modified time: 2018-10-26 17:57:32
  * @Description: 公交线路下载任务
  */
 const BuslineType = require('./BuslineType')
@@ -121,14 +121,17 @@ class BusLineDownloadTask {
         _res()
       } else {
         times++
-        log4jsInfo.info(`正在分批次查询线路数据，共${Math.round(allSize / once)}批次，当前第${times}次`)
+        log4jsInfo.info(`正在分批次查询线路数据，共${Math.round(allSize / once) + 1}批次，当前第${times}次`)
         Promise.all(arr.map(line => new Promise((res, rej) => {
           new BusLineLine2(line, this.webUrl, this.city, res, rej)
         }))).then(res => {
           // 批次获取数据成功
           // 进行下一次获取数据
           return (() => {
-            this.circulationGetBusLineLine2(busLine, allSize, times, _res, _rej)
+            setTimeout(() => {
+              log4jsInfo.info(`爬数据要讲道理~，每个批次间隔1s`)
+              this.circulationGetBusLineLine2(busLine, allSize, times, _res, _rej)
+            }, 1000)
           })()
         }).catch(err => {
           _rej(err)
